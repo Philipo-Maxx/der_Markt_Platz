@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import OTPInput from "react-otp-input";
 import { ClipLoader } from "react-spinners";
-const OtpForm = () => {
-  const [otp, setOtp] = useState("");
-
+const OtpForm = ({ otp, setOtp, handleOtpSubmit, buttonText }) => {
   const handleChange = (otpValue) => {
     setOtp(otpValue);
   };
-  const handleOtpSubmit = (e) => {
-    e.preventDefault();
-    console.log(otp);
-  };
+  //   const handleOtpSubmit = (e) => {
+  //     e.preventDefault();
+  //     console.log(otp);
+  //   };
   return (
     <div>
       <p className="mb-3">Enter the otp sent to your email address</p>
@@ -42,6 +40,7 @@ const OtpForm = () => {
           //disabled={loading}
         >
           {/* {loading ? <ClipLoader color="#61459e" /> : "Verify"} */}
+          {buttonText}
         </button>
       </form>
     </div>

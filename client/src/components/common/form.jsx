@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Select, SelectTrigger } from "../ui/select";
 import { SelectContent, SelectValue, SelectItem } from "@radix-ui/react-select";
+import { ClipLoader } from "react-spinners";
 
 import { Button } from "../ui/button";
 
@@ -13,6 +14,7 @@ const CommonForm = ({
   setFormData,
   onSubmit,
   buttonText,
+  loading,
 }) => {
   const renderInputsByComponentType = (getControlItem) => {
     let element = null;
@@ -111,8 +113,8 @@ const CommonForm = ({
           </div>
         ))}
       </div>
-      <Button type="submit" className="mt-2 w-full">
-        {buttonText || "Submit"}
+      <Button type="submit" className="mt-2 w-full" disabled={loading}>
+        {loading ? <ClipLoader color="#61459e" /> : `${buttonText}`}
       </Button>
     </form>
   );

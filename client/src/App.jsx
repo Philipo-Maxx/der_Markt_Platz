@@ -12,29 +12,38 @@ import ShoppingHome from "./pages/shopping-view/home";
 import NotFound from "./pages/not-found";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
-// import Register from "./pages/auth/perano/Register";
 import { Routes, Route } from "react-router-dom";
 import UnAuthPage from "./pages/unauth-page";
 import CheckAuth from "./components/common/check-auth";
 import VerifyEmail from "./pages/auth/VerifyEmail";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { checkAuth } from "./store/auth-slice";
+import { Skeleton } from "./components/ui/skeleton";
 function App() {
-  // const isAuthenticated = true;
-  // const user = {
-  //   name: "Maxx",
-  //   role: "user",
-  // };
+  const { isAuthenticated, user, isLoading } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+  console.log(`auth: ${isAuthenticated} , user: ${user}`);
+
+  if (isLoading) return <Skeleton className="w-[800px] bg-black h-[600px]" />;
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
         <Route
           path="/auth"
           element={
-            <CheckAuth>
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <AuthLayout />
             </CheckAuth>
           }
         >
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<Login isLoading={isLoading} />} />
           <Route path="register" element={<Register />} />
           <Route path="verify-email" element={<VerifyEmail />} />
         </Route>
@@ -42,7 +51,7 @@ function App() {
         <Route
           path="/admin"
           element={
-            <CheckAuth>
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <AdminLayout />
             </CheckAuth>
           }
@@ -56,7 +65,7 @@ function App() {
         <Route
           path="/shop"
           element={
-            <CheckAuth>
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <ShoppingLayout />
             </CheckAuth>
           }

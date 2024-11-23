@@ -7,8 +7,8 @@ const CheckAuth = ({ isAuthenticated, user, children }) => {
   if (
     !isAuthenticated &&
     !(
-      location.pathname.includes("/login") ||
       location.pathname.includes("/register") ||
+      location.pathname.includes("/login") ||
       location.pathname.includes("/verify-email")
     )
   ) {
@@ -18,7 +18,8 @@ const CheckAuth = ({ isAuthenticated, user, children }) => {
   if (
     isAuthenticated &&
     (location.pathname.includes("/login") ||
-      location.pathname.includes("/register"))
+      location.pathname.includes("/register") ||
+      location.pathname.includes("/verify-email"))
   ) {
     if (user?.role === "admin") {
       return <Navigate to="/admin/dashboard" />;
@@ -29,10 +30,10 @@ const CheckAuth = ({ isAuthenticated, user, children }) => {
 
   if (
     isAuthenticated &&
-    user?.role !== "admin" &&
+    user?.role === "user" &&
     location.pathname.includes("admin")
   ) {
-    return <Navigate to="/shop/home" />;
+    return <Navigate to="/unauth-page" />;
   }
 
   if (

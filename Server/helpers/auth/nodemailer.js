@@ -10,7 +10,7 @@ const sendOTP = async (user) => {
       },
     });
 
-    const otp = await otpGeneration(user._id, "verify-user");
+    const otp = await otpGeneration(user._id, "verify-email");
     console.log(otp);
     const mailOptions = {
       from: process.env.SENDER_EMAIL,

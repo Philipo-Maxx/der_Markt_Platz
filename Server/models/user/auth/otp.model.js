@@ -16,13 +16,18 @@ const userOtpSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+
+  expiry: {
+    type: Date,
+    default: Date.now(),
+  },
   otpType: {
     type: String,
-    enum: ["verify-user", "password-reset"],
+    enum: ["verify-email", "password-reset"],
   },
 });
 
-userOtpSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });
+userOtpSchema.index({ expiry: 1 }, { expireAfterSeconds: 0 });
 const userOtp = model("userOtp", userOtpSchema);
 
 export { userOtp };

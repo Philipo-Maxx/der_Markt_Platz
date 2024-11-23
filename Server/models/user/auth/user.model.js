@@ -23,7 +23,6 @@ const userSchema = new Schema(
     gender: {
       type: String,
       enum: ["male", "female"],
-      required: true,
     },
 
     role: {
@@ -33,7 +32,6 @@ const userSchema = new Schema(
 
     dateOfBirth: {
       type: Date,
-      required: true,
     },
     isEmailVerified: {
       type: Boolean,
@@ -43,5 +41,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const user = model("Shopper", userSchema);
-export default user;
+const userShopper = model("Shopper", userSchema);
+export { userShopper };

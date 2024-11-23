@@ -13,7 +13,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: "http://localhost:5173/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Authorization",
@@ -29,6 +29,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.json());
 app.use("/api/v1/auth", authRoute);
 app.listen(PORT, () => {
   console.log(`Server listening on PORT ${PORT}`);

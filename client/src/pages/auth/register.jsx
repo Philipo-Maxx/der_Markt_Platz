@@ -12,6 +12,8 @@ const initialState = {
   email: "",
   password: "",
   confirmPassword: "",
+  dateOfBirth: "",
+  gender: "",
 };
 const register = () => {
   const [formData, setFormData] = useState(initialState);

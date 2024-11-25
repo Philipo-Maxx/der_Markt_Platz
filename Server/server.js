@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { authRoute } from "./routes/auth/auth.route.js";
+import { productRouter } from "./routes/admin/products.route.js";
 
 const app = express();
 const PORT = process.env.PORT_NUM || 5000;
@@ -31,6 +32,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/admin/products", productRouter);
+app.timeout = 60000;
 app.listen(PORT, () => {
   console.log(`Server listening on PORT ${PORT}`);
 });

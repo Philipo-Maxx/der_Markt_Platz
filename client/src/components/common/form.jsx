@@ -3,7 +3,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Select, SelectTrigger } from "../ui/select";
-import { SelectContent, SelectValue, SelectItem } from "@radix-ui/react-select";
+import { SelectContent, SelectValue, SelectItem } from "../ui/select";
 import { ClipLoader } from "react-spinners";
 
 import { Button } from "../ui/button";
@@ -15,6 +15,7 @@ const CommonForm = ({
   onSubmit,
   buttonText,
   loading,
+  imageLoadingState,
 }) => {
   const renderInputsByComponentType = (getControlItem) => {
     let element = null;
@@ -23,6 +24,7 @@ const CommonForm = ({
       case "input":
         element = (
           <Input
+            disabled={imageLoadingState}
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
@@ -41,6 +43,7 @@ const CommonForm = ({
       case "select":
         element = (
           <Select
+            disabled={imageLoadingState}
             onValueChange={(value) =>
               setFormData({
                 ...formData,
@@ -50,7 +53,7 @@ const CommonForm = ({
             value={value}
           >
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={getControlItem.placeholder} />
+              <SelectValue placeholder={getControlItem.label} />
             </SelectTrigger>
             <SelectContent>
               {getControlItem.options && getControlItem.options.length > 0
@@ -69,6 +72,7 @@ const CommonForm = ({
       case "textarea":
         element = (
           <Textarea
+            disabled={imageLoadingState}
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.id}
@@ -86,6 +90,7 @@ const CommonForm = ({
       default:
         element = (
           <Input
+            disabled={imageLoadingState}
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.name}
@@ -113,8 +118,12 @@ const CommonForm = ({
           </div>
         ))}
       </div>
-      <Button type="submit" className="mt-2 w-full" disabled={loading}>
-        {loading ? <ClipLoader color="#61459e" /> : `${buttonText}`}
+      <Button
+        type="submit"
+        className="mt-2 w-full"
+        disabled={imageLoadingState}
+      >
+        {imageLoadingState ? <ClipLoader color="#61459e" /> : `${buttonText}`}
       </Button>
     </form>
   );

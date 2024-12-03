@@ -61,7 +61,7 @@ const addProduct = async (req, res) => {
     console.log(error);
     res.json({
       success: false,
-      message: `${error.message}`,
+      message: `Error Occured`,
     });
   }
 };
@@ -71,18 +71,16 @@ const fetchAllProducts = async (req, res) => {
   try {
     const documents = await productAdmin.find();
     if (documents) {
-      return res.status(200).json({
+      res.status(200).json({
         success: true,
         data: documents,
       });
-    } else {
-      throw new Error(`Error fetching Products, try again`);
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({
       success: false,
-      message: `${error.message}`,
+      message: `Error Occured`,
     });
   }
 };
@@ -102,7 +100,7 @@ const editProduct = async (req, res) => {
       totalStock,
     } = req.body;
 
-    const productToUpdate = await productAdmin.findById(id);
+    let productToUpdate = await productAdmin.findById(id);
 
     if (!productToUpdate) {
       return res.status(404).json({
@@ -115,14 +113,16 @@ const editProduct = async (req, res) => {
     productToUpdate.description = description || productToUpdate.description;
     productToUpdate.category = category || productToUpdate.category;
     productToUpdate.brand = brand || productToUpdate.brand;
-    productToUpdate.price = price || productToUpdate.price;
-    productToUpdate.salePrice = salePrice || productToUpdate.salePrice;
+    productToUpdate.price = price === "" ? 0 : price || productToUpdate.price;
+    productToUpdate.salePrice =
+      salePrice === "" ? 0 : salePrice || productToUpdate.salePrice;
     productToUpdate.totalStock = totalStock || productToUpdate.totalStock;
     productToUpdate.image_url = image || productToUpdate.image_url;
 
     await productToUpdate.save();
     res.status(200).json({
       success: true,
+      message: `Product updated successfully`,
       data: productToUpdate,
     });
   } catch (error) {
@@ -140,6 +140,7 @@ const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const product = await productAdmin.findByIdAndDelete(id);
+    console.log(product);
 
     if (!product) {
       return res.status(404).json({

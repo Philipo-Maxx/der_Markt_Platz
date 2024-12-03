@@ -5,7 +5,7 @@ import {
   fetchAllProducts,
   editProduct,
   deleteProduct,
-} from "../../controllers/admin/product.controller..js";
+} from "../../controllers/admin/product.controllr.js";
 import { upload } from "../../helpers/cloudinary/index.js";
 
 const productRouter = express.Router();
@@ -18,7 +18,7 @@ productRouter.post(
 
 productRouter.post("/add", addProduct);
 productRouter.put("/edit/:id", editProduct);
-productRouter.put("/delete/:id", deleteProduct);
+productRouter.delete("/delete/:id", deleteProduct);
 productRouter.get("/get", fetchAllProducts);
 
 export { productRouter };

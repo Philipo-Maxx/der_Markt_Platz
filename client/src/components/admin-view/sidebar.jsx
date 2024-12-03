@@ -3,7 +3,6 @@ import { ChartNoAxesCombined } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { LayoutDashboard, ShoppingBasket, BadgeCheck } from "lucide-react";
 import { Sheet, SheetHeader, SheetTitle, SheetContent } from "../ui/sheet";
-import { set } from "react-hook-form";
 
 export const adminSidebarMenuItems = [
   {

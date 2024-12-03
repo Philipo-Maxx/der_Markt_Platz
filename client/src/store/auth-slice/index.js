@@ -28,6 +28,15 @@ export const loginUser = createAsyncThunk("/auth/login", async (formData) => {
   return response.data;
 });
 
+export const logoutUser = createAsyncThunk("/auth/logout", async () => {
+  const response = await axios.post(
+    "http://localhost:2550/api/v1/auth/logout",
+    {},
+    { withCredentials: true }
+  );
+  return response.data;
+});
+
 export const verifyUser = createAsyncThunk(
   "/auth/verify-email",
   async (otp) => {
@@ -119,6 +128,14 @@ const authSlice = createSlice({
         (state.isLoading = false),
           (state.user = null),
           (state.isAuthenticated = false);
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = null;
+        state.isAuthenticated = false;
       });
   },
 });

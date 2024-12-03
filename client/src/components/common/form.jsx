@@ -16,6 +16,7 @@ const CommonForm = ({
   buttonText,
   loading,
   imageLoadingState,
+  isBtnDisabled,
 }) => {
   const renderInputsByComponentType = (getControlItem) => {
     let element = null;
@@ -118,12 +119,9 @@ const CommonForm = ({
           </div>
         ))}
       </div>
-      <Button
-        type="submit"
-        className="mt-2 w-full"
-        disabled={imageLoadingState}
-      >
-        {imageLoadingState ? <ClipLoader color="#61459e" /> : `${buttonText}`}
+      <Button type="submit" className="mt-2 w-full" disabled={isBtnDisabled}>
+        {/* {isBtnDisabled ? <ClipLoader color="#61459e" /> : `${buttonText}`} */}
+        {buttonText}
       </Button>
     </form>
   );

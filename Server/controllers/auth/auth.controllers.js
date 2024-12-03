@@ -87,6 +87,7 @@ const verifyUser = async (req, res) => {
       // });
       throw new Error("User with OTP does not exist");
     }
+    console.log("userOTP line 90", userOTP);
     if (userOTP.otp === otp) {
       const User = await userShopper.findByIdAndUpdate(userOTP.user, {
         isEmailVerified: true,

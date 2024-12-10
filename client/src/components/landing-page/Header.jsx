@@ -30,7 +30,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full flex justify-around items-center z-50 px-6 py-2 shadow-md transition-transform duration-300 bg-cyan-200">
+    <header className="fixed top-0 left-0 w-full flex justify-around items-center z-50 px-6 py-2 shadow-md transition-transform duration-300 bg-blue-200">
       <div className="text-4xl font-bold text-blue-950">Spark Haven</div>
 
       {/* Desktop Navigation */}
@@ -39,7 +39,7 @@ const Header = () => {
           to="home"
           smooth={true}
           duration={500}
-          className="text-gray-500 hover:text-black cursor-pointer"
+          className="text-gray-500 text-xl hover:text-black cursor-pointer"
         >
           Home
         </ScrollLink>
@@ -48,7 +48,7 @@ const Header = () => {
           to="about"
           smooth={true}
           duration={500}
-          className="text-gray-500 hover:text-black cursor-pointer"
+          className="text-gray-500 text-xl hover:text-black cursor-pointer"
         >
           About
         </ScrollLink>
@@ -57,7 +57,7 @@ const Header = () => {
           to="contact"
           smooth={true}
           duration={500}
-          className="text-gray-500 hover:text-black cursor-pointer"
+          className="text-gray-500 text-xl hover:text-black cursor-pointer"
         >
           Contact
         </ScrollLink>
@@ -78,7 +78,7 @@ const Header = () => {
             to="home"
             smooth={true}
             duration={500}
-            className="text-gray-500 hover:text-black cursor-pointer"
+            className="text-gray-500 text-xl hover:text-black cursor-pointer"
           >
             Home
           </ScrollLink>
@@ -87,7 +87,7 @@ const Header = () => {
             to="about"
             smooth={true}
             duration={500}
-            className="text-gray-500 hover:text-black cursor-pointer"
+            className="text-gray-500 text-xl hover:text-black cursor-pointer"
           >
             About
           </ScrollLink>
@@ -96,7 +96,7 @@ const Header = () => {
             to="contact"
             smooth={true}
             duration={500}
-            className="text-gray-500 hover:text-black cursor-pointer"
+            className="text-gray-500 text-xl hover:text-black cursor-pointer"
           >
             Contact
           </ScrollLink>

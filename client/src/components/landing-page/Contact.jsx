@@ -39,7 +39,7 @@ const Contact = () => {
                 </i>
               </span>
               <p className="text-lg text-gray-700">
-                123 Spark Lane, Jewel City, CA 90210
+                334 Old Ojo Rd, Alakija, Lagos 102102, Lagos
               </p>
             </div>
 

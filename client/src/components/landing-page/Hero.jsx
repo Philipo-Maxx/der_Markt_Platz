@@ -7,7 +7,7 @@ import { FiArrowRight } from "react-icons/fi";
 const Hero = () => {
   return (
     <Element name="home">
-      <section className="bg-blue-200 text-center flex flex-col md:flex-row pt-28 px-4 justify-around items-center md:items-start">
+      <section className="bg-gradient-to-b from-blue-300 to-white text-center flex flex-col md:flex-row pt-28 px-4 justify-around items-center md:items-start">
         <div className="max-w-3xl mx-auto text-left mb-6 md:mb-0">
           <h1 className="text-4xl sm:text-5xl font-serif text-gray-800">
             Welcome to Spark Haven
@@ -43,7 +43,7 @@ const Hero = () => {
         <img
           src={ring} // Use the imported image
           alt="Product showcase"
-          className="w-1/2 h-50 sm:w-2/3 md:w-1/3 max-w-xs rounded-full border-rounded-full shadow-lg"
+          className="w-1/2 h-50 sm:w-2/3 md:w-1/3 max-w-xs rounded-full border-rounded-full  pb-5"
         />
       </section>
     </Element>

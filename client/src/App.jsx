@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "./components/ui/skeleton";
+import LandingPage from "./pages/views/LandingPage";
 function App() {
   const { isAuthenticated, user, isLoading } = useSelector(
     (state) => state.auth
@@ -35,15 +36,7 @@ function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <CheckAuth
-              isAuthenticated={isAuthenticated}
-              user={user}
-            ></CheckAuth>
-          }
-        />
+        <Route path="/" element={<LandingPage />} />
 
         {/* <Route path="/" element={}>
 

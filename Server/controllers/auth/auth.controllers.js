@@ -14,22 +14,16 @@ const createUser = async (req, res) => {
       req.body;
 
     if (password !== confirmPassword) {
-      // return res.status(400).json({
-      //   success: false,
-      //   message: "Password and Confirm Password does not match",
-      // });
-      throw new Error("Password and Confirm Password does not match");
+      return res.status(400).json({ message: "Password does not match" });
     }
 
     const emailExist = await userShopper.findOne({ email: email });
     if (emailExist) {
-      // return res
-      //   .status(400)
-      //   .json({ success: false, message: "Email already exists" });
-      throw new Error("Email already exists");
+      return res.status(400).json({ message: "Email already exists" });
     }
 
     const salt = await bcrypt.genSalt(10);
+
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = await userShopper.create({
@@ -41,11 +35,14 @@ const createUser = async (req, res) => {
     });
 
     if (newUser) {
+      //send verification Email
       await sendOTP(newUser);
+
+      //Generate and send verification token as response to client
 
       const token = generateVerificationToken(newUser._id);
       console.log(token);
-      res.status(200).json({ success: true, message: `${token}` });
+      res.status(200).json({ message: "verification email sent", token });
     }
   } catch (error) {
     console.log(error);
@@ -85,7 +82,7 @@ const verifyUser = async (req, res) => {
       //   success: false,
       //   message: "User with OTP does not exist",
       // });
-      throw new Error("User with OTP does not exist");
+      throw new Error("OTP does not exist");
     }
     console.log("userOTP line 90", userOTP);
     if (userOTP.otp === otp) {
@@ -129,16 +126,19 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const User = await userShopper.findOne({ email });
+    //check if user exists
     if (!User) {
       throw new Error(`User does not Exists, Please register first`);
     }
 
+    //check if password matches
     const isMatches = await bcrypt.compare(password, User.password);
     if (!isMatches) {
       throw new Error(`Password credentials error`);
     }
 
     if (!User.isEmailVerified) {
+      //send verification Email again
       const userOTP = await userOtp.findOne({
         user: User._id,
         otpType: "verify-email",

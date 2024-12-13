@@ -50,7 +50,7 @@ const MenuItems = () => {
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className="text-sm font-medium cursor-pointer"
+          className="text-sm font-medium cursor-pointer hover:text-orange-400"
           key={menuItem.id}
         >
           {menuItem.label}
@@ -80,11 +80,11 @@ const HeaderRightContent = () => {
           onClick={() => setOpenCartSheet(true)}
           variant="outline"
           size="icon"
-          className="relative"
+          className="relative bg-background text-red-600"
         >
           <ShoppingCart className="w-6 h-6" />
           <span className="absolute top-[-5px] right-[2px] font-bold text-sm">
-            {cartItems?.items?.length || 0}
+            {cartItems?.items?.length}
           </span>
           <span className="sr-only">User cart</span>
         </Button>
@@ -128,7 +128,7 @@ const ShoppingHeader = () => {
     <header className="sticky top-0 z-40 w-full border-b bg-blue-200">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <ShoppingBag className="h-6 w-6" />
+          <ShoppingBag className="h-8 w-8 text-amber-600" />
           <span className="font-bold">Spark Haven</span>
         </Link>
         <Sheet>

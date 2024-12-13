@@ -113,10 +113,16 @@ const ShoppingListing = () => {
         quantity: 1,
       })
     ).then((data) => {
+      console.log(data);
       if (data?.payload?.success) {
         dispatch(fetchCartItems(user?.id));
         toast({
           title: "Product is added to cart",
+        });
+      } else {
+        toast({
+          title: "Failed to add product to cart",
+          variant: "destructive",
         });
       }
     });
@@ -143,8 +149,6 @@ const ShoppingListing = () => {
   useEffect(() => {
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
-
-  console.log(productList, "productListproductListproductList");
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6">

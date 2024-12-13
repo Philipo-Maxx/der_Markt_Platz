@@ -29,6 +29,9 @@ import { useToast } from "@/hooks/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 import { GiChainedHeart, GiGemChain, GiChaingun } from "react-icons/gi";
+import About from "@/components/landing-page/About";
+import Contact from "@/components/landing-page/Contact";
+import Footer from "@/components/landing-page/Footer.";
 
 const categoriesWithIcon = [
   { id: "watches", label: "Watches", icon: Watch },
@@ -42,7 +45,8 @@ const categoriesWithIcon = [
 
 const brandsWithIcon = [
   { id: "t_co", label: "Tiffany & Co.", icon: FaUsers },
-  { id: "h_w", label: "Harry Winston", icon: User },
+  { id: "casio", label: "Casio", icon: User },
+  { id: "rolex", label: "Rolex", icon: User },
   { id: "cartier", label: "Cartier", icon: FaUsers },
   { id: "v_c_a", label: "Van Cleef & Arpels", icon: FaUsers },
   { id: "graff", label: "Graff", icon: User },
@@ -123,7 +127,7 @@ function ShoppingHome() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="relative w-full h-[600px] overflow-hidden">
+      <div className="relative bg-blue-100 w-full h-[500px] overflow-hidden">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
               <img
@@ -131,7 +135,7 @@ function ShoppingHome() {
                 key={index}
                 className={`${
                   index === currentSlide ? "opacity-100" : "opacity-0"
-                } absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000`}
+                } absolute top-0 left-0 w-full h-full object-contain transition-opacity duration-1000`}
               />
             ))
           : null}
@@ -145,7 +149,7 @@ function ShoppingHome() {
                 featureImageList.length
             )
           }
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-300/80"
         >
           <ChevronLeftIcon className="w-4 h-4" />
         </Button>
@@ -157,16 +161,18 @@ function ShoppingHome() {
               (prevSlide) => (prevSlide + 1) % featureImageList.length
             )
           }
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-300/80"
         >
           <ChevronRightIcon className="w-4 h-4" />
         </Button>
       </div>
-      <section className="py-12 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            Shop by category
-          </h2>
+      <section className="py-12 bg-blue-400">
+        <div className="container  mx-auto px-4">
+          <div className=" bg-blue-200">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              Shop by category
+            </h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {categoriesWithIcon.map((categoryItem) => (
               <Card
@@ -185,7 +191,7 @@ function ShoppingHome() {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-200">
+      <section className="py-12 bg-blue-300">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -220,6 +226,12 @@ function ShoppingHome() {
                 ))
               : null}
           </div>
+        </div>
+      </section>
+      <section>
+        <div className="bg-background">
+          <Contact />
+          <Footer />
         </div>
       </section>
       <ProductDetailsDialog

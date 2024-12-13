@@ -21,17 +21,14 @@ const About = () => {
             designed to suit a variety of tastes and styles, from classic
             elegance to modern sophistication. Affordable Luxury: We believe
             that everyone deserves to shine. That’s why we offer exceptional
-            pieces at accessible prices. Our Mission At Spark Haven, we aim to
-            inspire confidence and celebrate individuality. Our jewelry is
-            designed to make you feel empowered, elegant, and truly yourself. A
-            Commitment to Sustainability We’re passionate about preserving the
-            beauty of our planet. That’s why we prioritize ethical sourcing and
-            sustainable practices in our operations. Let’s Spark a Connection
-            We’re more than just a jewelry store; we’re a community of sparkle
-            enthusiasts. Follow us on social media and share your Spark Haven
-            moments with us. Let’s celebrate the beauty of life, together. Thank
-            you for choosing Spark Haven. We’re honored to be a part of your
-            journey.
+            pieces at accessible prices. Our jewelry is designed to make you
+            feel empowered, elegant, and truly yourself. A Commitment to
+            Sustainability We’re passionate about preserving the beauty of our
+            planet. That’s why we prioritize ethical sourcing and sustainable
+            practices in our operations. Follow us on social media and share
+            your Spark Haven moments with us. Let’s celebrate the beauty of
+            life, together. Thank you for choosing Spark Haven. We’re honored to
+            be a part of your journey.
           </p>
 
           <div className="mt-6">

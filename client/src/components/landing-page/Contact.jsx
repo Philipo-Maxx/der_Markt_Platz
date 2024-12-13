@@ -3,6 +3,7 @@ import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
+  FaYoutube,
   FaLinkedin,
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -28,7 +29,9 @@ const Contact = () => {
                   <FaPhoneAlt />
                 </i>
               </span>
-              <p className="text-lg text-gray-700">+2348021382833</p>
+              <p className="text-lg text-gray-700">
+                +2348021382833, +2349079086224
+              </p>
             </div>
 
             {/* Address */}
@@ -61,6 +64,15 @@ const Contact = () => {
               >
                 <i className="fab fa-twitter text-3xl">
                   <FaTwitter />
+                </i>
+              </a>
+              <a
+                href="https://youtube.com/sparkhaven"
+                className="text-red-500 hover:text-red-800"
+                aria-label="Twitter"
+              >
+                <i className="fab fa-twitter text-3xl">
+                  <FaYoutube />
                 </i>
               </a>
               <a

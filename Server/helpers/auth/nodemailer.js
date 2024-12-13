@@ -15,7 +15,8 @@ const sendOTP = async (user) => {
     const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: user.email,
-      subject: "Welcome to MarktPlaz, Your OTP is contained in the Email",
+      subject:
+        "Welcome to Spark Haven. To complete your registration, please enter the OTP below",
       text: `This is your OTP: ${otp}`,
     };
 

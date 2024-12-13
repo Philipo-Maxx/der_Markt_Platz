@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import logo from "../../assets/Shopping_Hd.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,11 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full flex justify-around items-center z-50 px-6 py-2 shadow-md transition-transform duration-300 bg-blue-200">
-      <div className="text-4xl font-bold text-blue-950">Spark Haven</div>
+      <div className="flex gap-3">
+        <img src={logo} alt="logo" className="w-12 h-12" />
+
+        <div className="text-4xl font-bold text-blue-950">Spark Haven</div>
+      </div>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex text-xs  font-semibold space-x-20">

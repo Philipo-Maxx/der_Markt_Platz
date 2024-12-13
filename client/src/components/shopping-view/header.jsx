@@ -19,6 +19,7 @@ import { logoutUser } from "@/store/auth-slice";
 import { UserCartWrapper } from "./cart-wrapper";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
+import image from "../../assets/Shopping_Hd.png";
 
 const MenuItems = () => {
   const navigate = useNavigate();
@@ -128,8 +129,8 @@ const ShoppingHeader = () => {
     <header className="sticky top-0 z-40 w-full border-b bg-blue-200">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <ShoppingBag className="h-8 w-8 text-amber-600" />
-          <span className="font-bold">Spark Haven</span>
+          <img src={image} alt="" className="h-10 w-10" />
+          <span className="font-bold text-2xl">Spark Haven</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>
